@@ -1,0 +1,26 @@
+job('maven_dsl') {
+
+    description('Maven dsl project')
+    parameters {
+        stringParam('Hello', defaultValue = 'world', description = 'Hello world')
+	    booleanParam('FLAG', true)
+        choiceParam('OPTION', ['option 1 (default)', 'option 2', 'option 3'])
+    }
+    scm {
+        git('https://github.com/royanu91/hello-world.git', 'master')
+    }
+      triggers {
+        scm('* * * * *')
+    }
+
+    steps {
+        maven {
+            mavenInstallation('Maven')
+            goals('-B -DskipTests clean package')
+        }
+        maven {
+            mavenInstallation('Maven')
+            goals('test')
+        }
+    }
+}
