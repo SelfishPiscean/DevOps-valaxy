@@ -7,7 +7,7 @@ job('maven_dsl') {
         choiceParam('OPTION', ['option 1 (default)', 'option 2', 'option 3'])
     }
     scm {
-        git('https://github.com/royanu91/Tomcat-Webapp.git', 'master')
+        git('https://github.com/royanu91/maven-hello-world', 'master')
     }
       triggers {
         scm('* * * * *')
